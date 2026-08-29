@@ -53,7 +53,7 @@ public sealed class GameplayScreenView : MonoBehaviour
         var ground = Image("Vessel Ground Shadow", field, glow, new Color(.18f, .24f, .30f, .12f)); Rect(ground.rectTransform, new Vector2(0, -454), new Vector2(850, 80));
         var cavity = Image("Inner Cavity Tint", field, rounded, new Color(.975f, .973f, .968f, .98f)); Rect(cavity.rectTransform, new Vector2(0, 18), new Vector2(820, 780));
         var depth = Image("Inner Bottom Ambient Depth", field, glow, new Color(.31f, .30f, .28f, .09f)); Rect(depth.rectTransform, new Vector2(0, -282), new Vector2(790, 205));
-        var pile = new GameObject("Dense Dry Fragment Pile", typeof(RectTransform), typeof(RectMask2D)).GetComponent<RectTransform>(); pile.SetParent(field, false); Rect(pile, new Vector2(0, -125), new Vector2(790, 600));
+        var pile = new GameObject("Dense Dry Fragment Pile", typeof(RectTransform), typeof(RectMask2D)).GetComponent<RectTransform>(); pile.SetParent(field, false); Rect(pile, new Vector2(0, 18), new Vector2(790, 780));
         Fragments(pile);
         var inner = Image("Inner Cavity Highlight", field, rounded, new Color(1, 1, 1, .045f)); Rect(inner.rectTransform, new Vector2(0, 84), new Vector2(808, 615));
         var body = Image("Outer Shell Volume", field, vessel, new Color(1f, .97f, .93f, .22f)); Rect(body.rectTransform, new Vector2(0, 4), new Vector2(1040, 950));
@@ -64,13 +64,14 @@ public sealed class GameplayScreenView : MonoBehaviour
     private void Fragments(RectTransform parent)
     {
         var positions = new[] {
-            new Vector2(-296,-257), new Vector2(-98,-267), new Vector2(103,-255), new Vector2(296,-263),
-            new Vector2(-306,-135), new Vector2(-104,-121), new Vector2(103,-140), new Vector2(305,-123),
-            new Vector2(-320,-6), new Vector2(-160,13), new Vector2(4,-10), new Vector2(166,17), new Vector2(320,-5),
-            new Vector2(-126,132), new Vector2(86,178), new Vector2(278,110)};
-        var scales = new[] { 1.05f,1.09f,1.02f,1.08f,1.10f,1.03f,1.08f,1.04f,1.05f,1.10f,1.03f,1.07f,1.02f,1.08f,1.05f,1.00f };
-        var rotation = new[] { -10f,8f,-13f,10f,11f,-8f,14f,-9f,-7f,13f,-11f,9f,7f,-12f,10f,-6f };
-        var sprite = new[] { 0,1,2,5,6,3,7,1,5,0,4,6,3,7,1,2 };
+            new Vector2(-300,-300), new Vector2(-99,-313), new Vector2(104,-294), new Vector2(308,-305),
+            new Vector2(-316,-171), new Vector2(-145,-143), new Vector2(65,-161), new Vector2(272,-137),
+            new Vector2(-274,-37), new Vector2(-61,-57), new Vector2(125,-25), new Vector2(325,-45),
+            new Vector2(-328,78), new Vector2(-139,101), new Vector2(84,78), new Vector2(278,105),
+            new Vector2(-208,208), new Vector2(2,177), new Vector2(219,211)};
+        var scales = new[] { 1.12f,1.16f,1.09f,1.15f,1.14f,1.08f,1.17f,1.10f,1.11f,1.16f,1.08f,1.14f,1.17f,1.09f,1.15f,1.11f,1.13f,1.08f,1.16f };
+        var rotation = new[] { -24f,18f,-30f,22f,17f,-26f,33f,-19f,-32f,23f,-17f,28f,20f,-35f,24f,-22f,31f,-18f,27f };
+        var sprite = new[] { 0,1,6,4,5,3,7,1,6,0,4,2,3,7,1,5,0,6,2 };
         for (var i = 0; i < positions.Length; i++)
         {
             var size = new Vector2(330, 255) * scales[i];
